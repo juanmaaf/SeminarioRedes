@@ -1,6 +1,7 @@
 import tkinter as tk    # Librería para interfaz gráfica
 from tkinter.simpledialog import askinteger # Para pedir información al usuario 
 import pandas as pd
+#import os
 
 import metodos
 import facebook
@@ -122,21 +123,40 @@ def main():
 
     # Método para cerrar ventana principal
     def salir():
+        # Borramos todos los Excel menos el de datos útiles -> No Necesario. Si quieres borrar al finalizar -> Descomenta
+        
+        # Verificar si el archivo existe antes de intentar borrarlo
+        # if os.path.exists(excel_corregido_sin_redes):
+        #     # Borrar el archivo
+        #     os.remove(excel_corregido_sin_redes)
+            
+        # if os.path.exists(excel_corregido_redes):
+        #     os.remove(excel_corregido_redes)
+            
+        # if os.path.exists(excel_facebook):
+        #     os.remove(excel_facebook)
+        
+        # if os.path.exists(excel_twitter):
+        #     os.remove(excel_twitter)
+            
+        # if os.path.exists(excel_instagram):
+        #     os.remove(excel_instagram)
+            
         if root is not None:
             root.destroy()
         
     # Crear botones para las opciones del menú en el Frame
     button_sin_redes = tk.Button(frame, text="Estudio Sin Redes", command=lambda:sin_redes.estudio_sin_redes(root, excel_corregido_sin_redes))
-    #button_facebook = tk.Button(frame, text="Estudio Influencia Facebook", command=lambda:facebook.estudio_facebook(root))
-    #button_twitter = tk.Button(frame, text="Estudio Influencia Twitter", command=lambda:twitter.estudio_twitter(root))
-    #button_instagram = tk.Button(frame, text="Estudio Influencia Instagram", command=lambda:instagram.estudio_instagram(root))
+    button_facebook = tk.Button(frame, text="Estudio Influencia Facebook", command=lambda:facebook.estudio_facebook(root, excel_facebook))
+    button_twitter = tk.Button(frame, text="Estudio Influencia Twitter", command=lambda:twitter.estudio_twitter(root, excel_twitter))
+    button_instagram = tk.Button(frame, text="Estudio Influencia Instagram", command=lambda:instagram.estudio_instagram(root, excel_instagram))
     button_salir = tk.Button(frame, text="Salir", command=salir)
 
     # Colocar los botones en el Frame
     button_sin_redes.pack()
-    #button_facebook.pack()
-    #button_twitter.pack()
-    #button_instagram.pack()
+    button_facebook.pack()
+    button_twitter.pack()
+    button_instagram.pack()
     button_salir.pack()
     
     # Iniciar la interfaz

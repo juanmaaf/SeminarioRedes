@@ -45,7 +45,7 @@ def efecto_red(dato_real, dato_estimado, probabilidad_cambio):
     probabilidad = min(probabilidad_cambio * diferencia, 1.0)
     
     random.seed()
-    if random.random() <= probabilidad: # Cambio de decisión
+    if random.random() < probabilidad: # Cambio de decisión
         if(dato_estimado == 0):
             return 1
         else:

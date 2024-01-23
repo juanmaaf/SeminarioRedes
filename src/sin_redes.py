@@ -3,7 +3,6 @@ from tkinter.simpledialog import askinteger # Para pedir información al usuario
 from tkinter import scrolledtext
 import pandas as pd
 import pyAgrum as gum
-import numpy as np
 import metodos
 from sklearn.metrics import mean_squared_error
 
